@@ -16,7 +16,7 @@ Future<void> main() async {
       => await FirebaseCrashlytics.instance.recordFlutterError(errDetails);
 
   SimpleLogger logger = SimpleLogger();
-  String FLAVOR = String.fromEnvironment('FLAVOR', defaultValue: "production");
+  const String FLAVOR = String.fromEnvironment('FLAVOR', defaultValue: "production");
   logger.info(FLAVOR);
 
   runZonedGuarded(
