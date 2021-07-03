@@ -1,8 +1,5 @@
 name: todo
-description: A new Flutter project.
-
-# The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
+description: Flutter todo app project.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
@@ -15,7 +12,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 0.0.1+1
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -24,24 +21,51 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # For Google
+  firebase_core: ^1.3.0
+  firebase_auth: ^1.4.1
+  firebase_crashlytics: ^2.0.6
+  cloud_firestore: ^2.2.2
+  google_sign_in: ^5.0.4
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  # For Architecture
+  flutter_hooks: ^0.17.0
+  hooks_riverpod: ^0.14.0+4
+
+  # For Model
+  freezed_annotation: ^0.14.2
+  json_serializable: ^4.1.3
+
+  # For Navigation
+  auto_route: ^2.2.0
+
+  # For Log
+  simple_logger: ^1.8.1
+
+  # For UI
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+  build_runner: ^2.0.5
+
+  # For Navigation
+  auto_route_generator: ^2.1.0
+
+  # For Model
+  freezed: ^0.14.2
+
+  # For App Icon
+  flutter_launcher_icons: ^0.9.0
+
+flutter_icons:
+  android: true
+  ios: true
 
 # The following section is specific to Flutter.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
