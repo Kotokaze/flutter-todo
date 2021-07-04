@@ -1,4 +1,6 @@
+import 'package:todo/src/data/model/user/user_model.dart';
+
 abstract class SignInUseCase {
-  Future<void> executeWithGoogle();
-  Future<void> executeWithGitHub();
+  Future<UserModel?> executeWithGoogle();
+  Future<UserModel?> executeWithGitHub();
 }
