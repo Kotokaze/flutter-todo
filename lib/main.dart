@@ -24,7 +24,7 @@ Future<void> main() async {
   _logger.info("[Flavor: ${FLAVOR}, isCrashlyticsCollectionEnabled: ${_crashlytics.isCrashlyticsCollectionEnabled}]");
 
   runZonedGuarded(
-    () => runApp(ProviderScope(child: App())),
+    () => runApp(ProviderScope(child: App(flavor: FLAVOR))),
     (err, stack) => _crashlytics.recordError(err, stack)
   );
 }
