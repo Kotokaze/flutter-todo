@@ -10,6 +10,8 @@ class App extends HookWidget {
   Widget build(BuildContext context) {
     final AppRouter appRouter = useMemoized(() => AppRouter());
     return MaterialApp.router(
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: (flavor == 'development'),
       routeInformationParser: appRouter.defaultRouteParser(),
       routerDelegate: appRouter.delegate(),
