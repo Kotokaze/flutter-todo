@@ -1,3 +1,3 @@
-abstract class SignInUseCase {
-  Future execute();
+abstract class SignOutUseCase {
+  Future<bool> execute();
 }
