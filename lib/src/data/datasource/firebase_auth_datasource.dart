@@ -52,10 +52,9 @@ class FirebaseAuthDataSource implements FirebaseAuthRepository {
   }
 
   @override
-  Future<bool> signOut() async {
-    // TODO: implement signOut
-    throw UnimplementedError();
-  }
+  Future<bool> signOut() async => await this
+      ._firebaseAuth.signOut()
+      .then((_) => Future.value(true));
 
   UserModel? _firebaseUserToUserModel(User? firebaseUser) => (firebaseUser != null)
       ? UserModel(
