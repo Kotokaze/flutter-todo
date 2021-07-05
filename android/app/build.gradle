@@ -99,6 +99,7 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
+            minifyEnabled true
             signingConfig signingConfigs.release
         }
     }
