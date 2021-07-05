@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:todo/src/ui/page/home_page.dart';
+import 'package:todo/src/ui/page/sign_in_page.dart';
 
 export 'app_route.gr.dart';
 
@@ -7,15 +8,20 @@ export 'app_route.gr.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(
-      path: '/',
+      path: '/home',
       page: HomePage,
-      initial: true,
       // children: <AutoRoute>[
       //   AutoRoute(
-      //     path: 'top',
-      //     page: HomePage,
+      //     path: '',
+      //     page: ,
       //   ),
       // ],
+    ),
+    AutoRoute(
+      path: '/signin',
+      page: SignInPage,
+      fullscreenDialog: true,
+      initial: true,
     ),
   ],
 )
