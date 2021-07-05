@@ -7,20 +7,24 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
 import 'package:todo/src/app/app.dart';
+import 'package:todo/src/data/provider/firebase_crashlytics_provider.dart';
+import 'package:todo/src/data/provider/logger_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(kDebugMode);
-  FlutterError.onError = (errDetails) async
-      => await FirebaseCrashlytics.instance.recordFlutterError(errDetails);
+  final ProviderContainer container = ProviderContainer();
+  late final FirebaseCrashlytics _crashlytics = container.read(firebaseCrashlyticsProvider);
+  late final SimpleLogger _logger = container.read(loggerProvider);
 
-  SimpleLogger logger = SimpleLogger();
+  await _crashlytics.setCrashlyticsCollectionEnabled(kDebugMode);
+  FlutterError.onError = await _crashlytics.recordFlutterError;
+
   const String FLAVOR = String.fromEnvironment('FLAVOR', defaultValue: "production");
-  logger.info(FLAVOR);
+  _logger.info("[Flavor: ${FLAVOR}, isCrashlyticsCollectionEnabled: ${_crashlytics.isCrashlyticsCollectionEnabled}]");
 
   runZonedGuarded(
-    () => runApp(ProviderScope(child: App())),
-    (err, stack) => FirebaseCrashlytics.instance.recordError(err, stack)
+    () => runApp(ProviderScope(child: App(flavor: FLAVOR))),
+    (err, stack) => _crashlytics.recordError(err, stack)
   );
 }
