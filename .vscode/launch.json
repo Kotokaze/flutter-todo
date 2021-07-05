@@ -10,7 +10,6 @@
       "request": "launch",
       "type": "dart",
       "args": [
-        "--verbose",
         "--dart-define=FLAVOR=development",
         "--flavor",
         "dev"
@@ -22,6 +21,7 @@
       "program": "lib/main.dart",
       "type": "dart",
       "args": [
+        "--dart-define=FLAVOR=production",
         "--flavor",
         "prod"
       ]

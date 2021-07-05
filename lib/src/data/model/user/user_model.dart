@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_model.freezed.dart';
@@ -9,7 +8,8 @@ class UserModel with _$UserModel {
   const factory UserModel({
     required String uid,
     String? name,
-    String? email,
+    required String email,
+    @Default(false) bool emailVerified,
     String? phoneNumber,
     String? photoUrl,
   }) = _UserModel;
