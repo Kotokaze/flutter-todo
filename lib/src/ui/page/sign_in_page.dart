@@ -11,9 +11,11 @@ import 'package:todo/src/ui/model/user_view_model.dart';
 class SignInPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final SimpleLogger _logger = context.read(loggerProvider);
-    final UserViewModel _userViewModel = context.read(userViewModelProvider);
-    final LoadingStateViewModel _loading = context.read(loadingStateViewModelProvider);
+    final SimpleLogger logger = context.read(loggerProvider);
+    final UserViewModel userViewModel = context.read(userViewModelProvider);
+    final LoadingStateViewModel loadingStateViewModel = context.read(loadingStateViewModelProvider);
+
+    logger.info("SIGNIN PAGE");
 
     return Scaffold(
       appBar: AppBar(title: Text("SignIn Page")),
@@ -23,15 +25,15 @@ class SignInPage extends HookWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SignInButton(Buttons.GoogleDark,
-              onPressed: () => _loading
-                  .whileLoading(() => _userViewModel.handleSignInWithGoogle()
+              onPressed: () => loadingStateViewModel
+                  .whileLoading(() => userViewModel.handleSignInWithGoogle()
                       .then((_) {
-                        if (_userViewModel.isAuthenticated){
-                          _logger.info("Signed in as ${_userViewModel.user!.uid}");
+                        if (userViewModel.isAuthenticated){
+                          logger.info("Signed in as ${userViewModel.user!.uid}");
                           context.router.replaceNamed('/home');
                         }
                         else
-                          _logger.info("Failed");
+                          logger.info("Failed");
                       })),
             ),
           ]
